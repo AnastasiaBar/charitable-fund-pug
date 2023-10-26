@@ -1,0 +1,10 @@
+.link {
+  $block-name: &; // #{$block-name}__element
+
+  color: var(--black);
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

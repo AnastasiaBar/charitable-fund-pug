@@ -1,0 +1,13 @@
+.container {
+  $block-name: &; // #{$block-name}__element
+
+  $padding-desktop: 40px;
+  $padding-mobile: 20px;
+
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media screen and (min-width: $screen-m) {
+    width: calc(100% - $padding-mobile * 2);
+  }
+}

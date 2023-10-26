@@ -1,0 +1,42 @@
+//- Все примеси в этом файле должны начинаться c имени блока (burger)
+//- Упоминание имени блока в классах обязательно, без этого он не попадёт
+//- в сборку
+
+mixin burger(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +burger('Текст', 'some-mod')
+
+  -
+  // список модификаторов
+    var allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' burger--' + modsList[i].trim();
+      }
+    }
+
+  .burger(class=allMods)&attributes(attributes)
+
+    .burger__button.burger__button--active
+      span
+      span
+      span
+    .burger__menu.burger__menu--active
+      .burger__nav
+        each val, key in {about: "О Фонде", programs: "Программы", reviews: "Благодарности", pressCenter: "Пресс-центр", activity: "Мероприятия", contacts: "Контакты"}
+          a.link.burger__nav-link(href='#' + key)= val
+      button.buttons.burger__buttons
+        svg.burger__social-network-icon
+          use(xlink:href='img/svgSprite.svg#icon__heart')
+        p Хочу помочь
+      .burger__social-media
+        -
+          let icons = ['icon__youtube', 'icon__classmates', 'icon__vk', 'icon__tg']
+        each icon in icons
+          a.burger__social-media-icon(href = '#')
+            svg
+             use(xlink:href = 'img/svgSprite.svg#' + icon)

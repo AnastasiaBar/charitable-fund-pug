@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока (heart-animation)
+//- Упоминание имени блока в классах обязательно, без этого он не попадёт
+//- в сборку
+
+mixin heart-animation(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +heart-animation('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' heart-animation--' + modsList[i].trim();
+      }
+    }
+
+  .heart-animation(class=allMods)&attributes(attributes)
+    svg.heart-animation__icon
+      use(xlink:href='img/svgSprite.svg#icon__heart')

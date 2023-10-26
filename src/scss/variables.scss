@@ -1,0 +1,23 @@
+@use "sass:color";
+
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --white: #ffffff;
+  --black: #000000;
+  --yellow: #f8b462;
+  --burgundy: #981140;
+  --grey: #f3f3f3;
+
+
+  --font-base: RobotoFlex, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-notosans: NotoSans, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-roboto: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-sourceserif: SourceSerifPro, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-size-root: 100%;
+  --font-size-base: 1rem;
+  --font-weight-base: 400;
+  --line-height-base: 1.25;
+}
+

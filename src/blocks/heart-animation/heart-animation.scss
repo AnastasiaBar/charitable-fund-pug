@@ -1,0 +1,67 @@
+.heart-animation {
+  $block-name: &; // #{$block-name}__element
+
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    width: 32px;
+    height: 32px;
+    background-image: url("../img/icon__heart.svg");
+    background-size: 32px 32px;
+    transform: translate(-50%, -50%);
+    content: "";
+  }
+
+  &::before {
+    opacity: 0.15;
+    animation: heart-animation--before 2.5s ease 100ms infinite !important;
+  }
+
+  &::after {
+    opacity: 0.25;
+    animation: heart-animation--after 2.5s ease 200ms infinite !important;
+  }
+
+  &__icon {
+    position: relative;
+    z-index: 20;
+    width: 32px;
+    height: 32px;
+    animation: heart-animation 2.5s ease 0s infinite !important;
+  }
+
+  @keyframes heart-animation {
+    0% {
+      transform: scale(1);
+    }
+
+    55% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes heart-animation--before {
+    20% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    75% {
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+  }
+
+  @keyframes heart-animation--after {
+    10% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    65% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+}

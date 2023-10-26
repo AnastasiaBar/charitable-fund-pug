@@ -1,0 +1,18 @@
+@import "../../scss/breakpoints";
+
+.buttons {
+  $block-name: &; // #{$block-name}__element
+
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  background: none;
+  background: var(--grey, #f3f3f3);
+  border: none;
+  border-radius: 112px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}

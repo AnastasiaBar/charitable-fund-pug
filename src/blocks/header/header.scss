@@ -1,0 +1,100 @@
+@import "../../scss/breakpoints";
+@import "../../scss/mixins/fluid";
+
+.header {
+  $block-name: &; // #{$block-name}__element
+
+  position: relative;
+  padding: 20px 0 25px;
+  background: var(--white, #fff);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 215px;
+    height: 44px;
+
+    @media screen and (min-width: $screen-tl) {
+      width: 340px;
+      height: 75px;
+    }
+  }
+
+  &__container-logo {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: -71px;
+      display: none;
+      width: 1px;
+      height: 100%;
+      background: var(--grey, #f3f3f3);
+      content: "";
+
+      @media screen and (min-width: $screen-tl) {
+        display: block;
+      }
+    }
+  }
+
+  &__social-network {
+    display: none;
+    gap: 0 8px;
+    align-items: center;
+
+    @media screen and (min-width: $screen-tl) {
+      display: flex;
+    }
+  }
+
+  &__container-icon {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: -4px;
+      width: 1px;
+      height: 100%;
+      background: var(--grey, #f3f3f3);
+      content: "";
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__social-network-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__burger {
+    display: flex;
+    gap: 0 8px;
+    align-items: center;
+
+    @media screen and (min-width: $screen-tl) {
+      display: none;
+    }
+  }
+
+  &__icon-heart {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
