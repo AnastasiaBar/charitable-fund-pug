@@ -7,5 +7,31 @@ block variables
   - metaKeywords = 'keywords'
 
 block content
-  .container
+
+  .hero
+    .container
+      .hero__inner
+        .hero__nav
+          each val, key in {about: "О Фонде", programs: "Программы", reviews: "Благодарности", pressCenter: "Пресс-центр", activity: "Мероприятия", contacts: "Контакты"}
+            a.link.hero__nav-link(href='#' + key)= val
+        .hero__project-assistance
+          +heart-animation('white')
+          p.hero__project-assistance-text Хочу помочь
+
+    .hero__swiper-container.hero__swiper-block
+      .hero__swiper-wrapper
+        .hero__swiper-slide
+          .hero__title 1
+        .hero__swiper-slide
+          .hero__title 2
+        .hero__swiper-slide
+          .hero__title 3
+      .hero__button-next
+      .hero__button-prev
+
+    .hero__swiper-container.hero__swiper-gallery
+      .hero__swiper-wrapper
+        .hero__swiper-slide Slide 1
+        .hero__swiper-slide Slide 2
+        .hero__swiper-slide Slide 3
 

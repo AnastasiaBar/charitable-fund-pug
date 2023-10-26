@@ -1,3 +1,30 @@
 .hero {
   $block-name: &; // #{$block-name}__element
+
+  background: var(--background-slider-burgundy);
+
+  &__inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+  }
+
+  &__nav{
+    display: flex;
+    gap: 0 40px;
+  }
+
+  &__project-assistance{
+    display: flex;
+    gap: 0 20px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__project-assistance-text, &__nav-link{
+    color: var(--white, #ffffff);
+    font-size: 18px;
+    line-height: 26px; /* 144.444% */
+  }
 }

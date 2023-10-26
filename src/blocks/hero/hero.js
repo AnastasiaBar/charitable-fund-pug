@@ -1,5 +1,6 @@
-// import ready from "../../js/utils/documentReady.js";
+import ready from "../../js/utils/documentReady.js";
 
-// ready(function () {
-//
-// });
+ready(function() {
+
+});
+

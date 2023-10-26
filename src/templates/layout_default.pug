@@ -44,6 +44,7 @@ html(class='no-js', lang='ru')
       meta(name='keywords', content= metaKeywords)
 
     block head
+      link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css')
       link(rel='stylesheet', href= src.css + 'style.css')
       script
         include ../js/head-script.js
@@ -57,6 +58,8 @@ html(class='no-js', lang='ru')
 
     block templates
 
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
     script(src= src.js + 'bundle.js')
 
     block scripts
