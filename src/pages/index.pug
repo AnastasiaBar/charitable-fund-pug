@@ -9,29 +9,83 @@ block variables
 block content
 
   .hero
+    .hero__main-slider.swiper-container
+      .swiper-wrapper
+        -
+          let sliderTop = [
+            {
+              title: '2 605 детей',
+              subTitle: 'за все время р аботы фонда получили помощь и возможность заниматься спортом',
+              imgUrl: '../img/hero__image-03.png',
+              colorSlide: '#B3315E',
+              details: true
+            },
+            {
+              title: 'Пас в будущее',
+              subTitle: 'Наша цель – дать возможность талантливым ребятам, увлеченным спортом, проявить свои способности',
+              imgUrl: '../img/hero__image-01.png',
+              colorSlide: '#dc9138',
+              details: false
+            },
+            {
+              smallHeadline: 'Фонд передал футбольную площадку Центру помощи детям «Ручеёк»',
+              subTitle: '',
+              imgUrl: '../img/hero__image-02.png',
+              colorSlide: '#067256',
+              details: true
+            }
+          ]
+
+        each slide in sliderTop
+          .hero__slide.swiper-slide
+            .hero__slide-padding(style='background:' + slide.colorSlide)
+              .container
+                .hero__inner
+                  .hero__nav
+                    each val, key in {about: "О Фонде", programs: "Программы", reviews: "Благодарности", pressCenter: "Пресс-центр", activity: "Мероприятия", contacts: "Контакты"}
+                      a.link.hero__nav-link(href='#' + key)= val
+                  .hero__project-assistance
+                    +heart-animation('white')
+                    p.hero__project-assistance-text Хочу помочь
+                .hero__slider-inner
+                  .hero__info
+                    if slide.title
+                      h2.hero__info-title= slide.title
+                    if slide.smallHeadline
+                      h2.hero__info-small-headline= slide.smallHeadline
+                    p.hero__info-subtitle= slide.subTitle
+                    if slide.details
+                      a.hero__info-link.link(href='#') Подробнее
+                  .hero__image
+                    img(src=slide.imgUrl, alt='')
+
+                    .hero__arrows.hero__arrows-main
+                      svg.hero__swiper-button-next
+                        use(xlink:href='img/svgSprite.svg#icon__arrow')
+                      svg.hero__swiper-button-prev
+                        use(xlink:href='img/svgSprite.svg#icon__arrow')
+                .swiper-pagination.hero__paginator
     .container
-      .hero__inner
-        .hero__nav
-          each val, key in {about: "О Фонде", programs: "Программы", reviews: "Благодарности", pressCenter: "Пресс-центр", activity: "Мероприятия", contacts: "Контакты"}
-            a.link.hero__nav-link(href='#' + key)= val
-        .hero__project-assistance
-          +heart-animation('white')
-          p.hero__project-assistance-text Хочу помочь
-
-    .hero__swiper-container.hero__swiper-block
-      .hero__swiper-wrapper
-        .hero__swiper-slide
-          .hero__title 1
-        .hero__swiper-slide
-          .hero__title 2
-        .hero__swiper-slide
-          .hero__title 3
-      .hero__button-next
-      .hero__button-prev
-
-    .hero__swiper-container.hero__swiper-gallery
-      .hero__swiper-wrapper
-        .hero__swiper-slide Slide 1
-        .hero__swiper-slide Slide 2
-        .hero__swiper-slide Slide 3
-
+      .hero__container-flex
+        .hero__slider-gallery.swiper-container
+          .swiper-wrapper
+            -
+              let slidesGallery = [
+                {
+                  imgUrl: '../img/hero__image-03.png',
+                },
+                {
+                  imgUrl: '../img/hero__image-01.png',
+                },
+                {
+                  imgUrl: '../img/hero__image-02.png',
+                }
+              ]
+            each slide in slidesGallery
+              .swiper-slide
+                  img.hero__slide-photo(src=slide.imgUrl, alt='')
+        .hero__arrows
+          svg.hero__swiper-button-next
+            use(xlink:href='img/svgSprite.svg#icon__arrow')
+          svg.hero__swiper-button-prev
+            use(xlink:href='img/svgSprite.svg#icon__arrow')

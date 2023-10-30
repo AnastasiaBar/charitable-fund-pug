@@ -3,19 +3,29 @@
 
   position: relative;
 
-  &--white &__icon {
-    fill: var(--white, #ffffff);
+  &__icon {
+    position: relative;
+    z-index: 20;
+    width: 32px;
+    height: 32px;
+    animation: heart-animation 2.5s ease 0s infinite !important;
   }
 
-  &--white:before, &--white:after {
+  &__block--white &__icon {
+    fill: var(--white, #fff);
+  }
+
+  &__block--white::before,
+  &__block--white::after {
     background-image: url("../img/icon__heart--white.svg");
   }
 
-  &--pink &__icon {
+  &__block--pink &__icon {
     fill: var(--pink, #d91869);
   }
 
-  &--pink:before, &--pink:after {
+  &__block--pink::before,
+  &__block--pink::after {
     background-image: url("../img/icon__heart--pink.svg");
   }
 
@@ -24,30 +34,22 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 0;
     width: 32px;
     height: 32px;
     background-size: 32px 32px;
-    z-index: 0;
     transform: translate(-50%, -50%);
     content: "";
   }
 
   &::before {
     opacity: 0.15;
-    animation: heart-animation--before 2.5s ease 100ms infinite !important;
+    animation: heart-before 2.5s ease 100ms infinite !important;
   }
 
   &::after {
     opacity: 0.25;
-    animation: heart-animation--after 2.5s ease 200ms infinite !important;
-  }
-
-  &__icon {
-    position: relative;
-    z-index: 20;
-    width: 32px;
-    height: 32px;
-    animation: heart-animation 2.5s ease 0s infinite !important;
+    animation: heart-after 2.5s ease 200ms infinite !important;
   }
 
   @keyframes heart-animation {
@@ -60,7 +62,7 @@
     }
   }
 
-  @keyframes heart-animation--before {
+  @keyframes heart-before {
     20% {
       transform: translate(-50%, -50%) scale(1);
     }
@@ -70,7 +72,7 @@
     }
   }
 
-  @keyframes heart-animation--after {
+  @keyframes heart-after {
     10% {
       transform: translate(-50%, -50%) scale(1);
     }

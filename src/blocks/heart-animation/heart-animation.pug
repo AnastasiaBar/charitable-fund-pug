@@ -15,7 +15,7 @@ mixin heart-animation(mods)
     if(typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' heart-animation--' + modsList[i].trim();
+        allMods = allMods + ' heart-animation__block--' + modsList[i].trim();
       }
     }
 
