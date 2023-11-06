@@ -1,0 +1,27 @@
+//- Все примеси в этом файле должны начинаться c имени блока (slider-arrows)
+//- Упоминание имени блока в классах обязательно, без этого он не попадёт
+//- в сборку
+
+mixin slider-arrows(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +slider-arrows('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' slider-arrows--' + modsList[i].trim();
+      }
+    }
+
+  .slider-arrows(class=allMods)&attributes(attributes)
+    .slider-arrows__inner
+      svg.slider-arrows__swiper-button-next
+        use(xlink:href='img/svgSprite.svg#icon__arrow')
+      svg.slider-arrows__swiper-button-prev
+        use(xlink:href='img/svgSprite.svg#icon__arrow')

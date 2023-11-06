@@ -1,0 +1,34 @@
+@import "../../scss/breakpoints";
+
+.blob-bottom {
+  $block-name: &; // #{$block-name}__element
+
+  &__icon-decor-bottom {
+    position: absolute;
+    z-index: 20;
+    color: #dc9138;
+    transform: scale(1);
+    transition: 1.2s ease;
+
+    &.active {
+      transform: scale(20);
+    }
+
+    &.active-two {
+      bottom: -400px;
+      left: -400px;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      bottom: -80px;
+      left: -80px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      bottom: -30%;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+    }
+  }
+}

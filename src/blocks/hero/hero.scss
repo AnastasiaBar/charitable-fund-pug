@@ -1,6 +1,9 @@
 @import "../../scss/breakpoints";
 
 .hero {
+  position: relative;
+  background: var(--white, #fff);
+
   .swiper-pagination-bullet {
     width: 5px;
     height: 5px;
@@ -20,32 +23,71 @@
 
   .swiper-button-disabled {
     &:hover {
-      animation: none !important;
+      animation: none;
     }
   }
 
-  &__main-slider {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  &__container-decor {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 
-  &__slide-padding {
-    margin-bottom: 100px;
-
-    @media screen and (min-width: $screen-ti) {
-      margin-bottom: 40px;
-    }
-
-    @media screen and (min-width: $screen-tl) {
-      margin-bottom: 100px;
+    @media screen and (min-width: $screen-d) {
+      display: block;
     }
   }
 
-  &__inner {
+  &__wrapper {
+    background: #b3315e;
+  }
+
+  &__decor-top-disabled,
+  &__decor-bottom-disabled {
+    svg {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      transition: transform 0.5s ease-out;
+    }
+  }
+
+  &__decor-top-disabled {
+    svg {
+      z-index: -1;
+      color: #b3315e;
+      transform: scale(20);
+
+      &.active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__decor-bottom-disabled {
+    svg {
+      bottom: -400px;
+      left: -300px;
+      transition: 0.5s ease-out;
+    }
+
+    &.active {
+      svg {
+        bottom: -30%;
+        left: -100px;
+      }
+    }
+  }
+
+  &__container-flex {
+    position: relative;
+    z-index: 10;
     display: none;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding-top: 40px;
 
     @media screen and (min-width: $screen-tl) {
@@ -56,21 +98,13 @@
   &__nav {
     display: flex;
     gap: 0 40px;
-
-    @media screen and (min-width: $screen-tl) {
-      gap: 0 20px;
-    }
-
-    @media screen and (min-width: $screen-d) {
-      gap: 0 40px;
-    }
   }
 
-  &__project-assistance-text,
-  &__nav-link {
+  &__nav-link,
+  &__text {
+    margin: 0;
     color: var(--white, #fff);
-    font-size: 18px;
-    line-height: 26px; /* 144.444% */
+    line-height: 26px;
 
     @media screen and (min-width: $screen-tl) {
       font-size: 16px;
@@ -81,43 +115,79 @@
     }
   }
 
-  &__project-assistance {
+  &__heart-button {
     display: flex;
     gap: 0 20px;
     align-items: center;
     cursor: pointer;
   }
 
-  &__slider-inner {
+  &__icon-decor-top {
+    position: absolute;
+    top: -90px;
+    z-index: -1;
+    display: none;
+    width: 240px;
+    height: 200px;
+    transform: scale(1.2);
+
+    @media screen and (min-width: $screen-d) {
+      right: -50px;
+      display: block;
+    }
+  }
+
+  &__inner {
     display: flex;
     flex-wrap: wrap;
+    gap: 0 32px;
     justify-content: space-between;
     margin-top: 0;
 
     @media screen and (min-width: $screen-ti) {
       flex-wrap: nowrap;
-      gap: 0 80px;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      margin-top: 64px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (min-width: $screen-ti) {
+      width: 50%;
+      margin-bottom: 20px;
     }
 
     @media screen and (min-width: $screen-d) {
-      gap: 0 128px;
-      margin-top: 68px;
+      width: calc(100% - 628px - 32px);
+      margin-bottom: 0;
     }
   }
 
   &__info {
-    min-height: 186px;
+    min-height: 230px;
     margin-top: 25px;
+    padding-bottom: 5px;
+
+    @media screen and (min-width: $screen-tl) {
+      padding-bottom: 10px;
+    }
   }
 
   &__info-title {
-    margin: 0 0 20px;
+    margin: 48px 0 20px;
     color: var(--white, #fff);
     font-weight: 500;
     font-size: 40px;
 
     @media screen and (min-width: $screen-tl) {
-      margin: 0 0 28px;
+      margin: 25px 0 28px;
       font-size: 64px;
     }
 
@@ -126,13 +196,15 @@
     }
   }
 
-  &__info-small-headline {
-    margin: 0;
+  &__info-smallTitle {
+    margin: 48px 0 20px;
     color: var(--white, #fff);
     font-weight: 500;
     font-size: 28px;
+    line-height: normal;
 
     @media screen and (min-width: $screen-tl) {
+      margin: 0 0 40px;
       font-size: 40px;
     }
 
@@ -145,7 +217,7 @@
     margin: 20px 0;
     color: var(--white, #fff);
     font-size: 16px;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
 
     @media screen and (min-width: $screen-tl) {
       margin-bottom: 40px;
@@ -154,151 +226,71 @@
     }
 
     @media screen and (min-width: $screen-d) {
+      margin: 20px 0;
       font-size: 24px;
-      line-height: 32px; /* 133.333% */
+      line-height: 32px;
     }
   }
 
   &__info-link {
-    padding-bottom: 3px;
+    position: relative;
+    padding-bottom: 5px;
     color: var(--white, #fff);
     font-size: 16px;
-    line-height: 24px; /* 150% */
-    border-bottom: 2px solid var(--white, #fff);
+    line-height: 24px;
 
     @media screen and (min-width: $screen-d) {
       font-size: 24px;
-      line-height: 32px; /* 150% */
+      line-height: 32px;
     }
-  }
 
-  &__image {
-    display: flex;
-    flex-shrink: 0;
-    gap: 0 32px;
-    width: calc(100% - 65px);
-    height: 200px;
-    margin-top: 50px;
-
-    @media screen and (min-width: $screen-t) {
+    &::before {
+      position: absolute;
+      bottom: 0;
       width: 100%;
+      height: 2px;
+      background: var(--white, #fff);
+      transition: 0.3s ease-out;
+      content: "";
     }
 
-    @media screen and (min-width: $screen-ti) {
-      width: 50%;
-      height: 260px;
-    }
-
-    @media screen and (min-width: $screen-tl) {
-      width: 50%;
-      height: 440px;
-      margin-top: 0;
-    }
-
-    @media screen and (min-width: $screen-d) {
-      width: 630px;
-      height: 530px;
-    }
-
-    img {
-      width: 100%;
-      height: 270px;
-      object-fit: cover;
-      border-radius: 4px;
-
-      @media screen and (min-width: $screen-ti) {
-        height: 300px;
+    &:hover {
+      &::before {
+        width: 0;
+        opacity: 0;
       }
-
-      @media screen and (min-width: $screen-tl) {
-        height: 522px;
-      }
-
-      @media screen and (min-width: $screen-d) {
-        height: 630px;
-      }
-    }
-  }
-
-  &__container-flex {
-    z-index: 100;
-    display: none;
-    gap: 0 156px;
-    align-items: center;
-    width: 625px;
-    height: 200px;
-    margin-top: -200px;
-
-    @media screen and (min-width: $screen-ti) {
-      display: flex;
-      gap: 0 30px;
-      width: 45%;
-      height: auto;
-      margin-top: -105px;
-    }
-
-    @media screen and (min-width: $screen-tl) {
-      gap: 0 20px;
-      margin-top: -185px;
-    }
-
-    @media screen and (min-width: $screen-d) {
-      gap: 0 130px;
-      width: 625px;
-      height: 200px;
-      margin-top: -200px;
     }
   }
 
   &__slider-gallery {
-    .swiper-slide {
-      width: 50%;
-      height: 100px;
-      margin: 0 !important;
-
-      @media screen and (min-width: $screen-ti) {
-        height: 130px;
-      }
-
-      @media screen and (min-width: $screen-tl) {
-        height: 167px;
-      }
-
-      @media screen and (min-width: $screen-d) {
-        height: auto;
-      }
-    }
-  }
-
-  &__arrows-main {
-    @media screen and (min-width: $screen-ti) {
-      display: none;
-    }
-  }
-
-  &__arrows {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-    margin-top: 155px;
-
-    @media screen and (min-width: $screen-ti) {
-      margin-top: 0;
-    }
-  }
-
-  &__slide-photo {
-    object-fit: cover;
-    border-radius: 4px;
-
-    @media screen and (min-width: $screen-ti) {
-      width: 95%;
-      height: 130px;
-    }
+    display: none;
+    gap: 0 148px;
+    align-items: center;
+    margin-bottom: -100px;
 
     @media screen and (min-width: $screen-tl) {
-      width: 95%;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: -120px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      align-items: center;
+      margin-bottom: -100px;
+    }
+  }
+
+  &__container-sliders {
+    display: flex;
+    gap: 0 20px;
+    width: calc(100% - 195px);
+  }
+
+  &__gallery-photo {
+    object-fit: cover;
+
+    @media screen and (min-width: $screen-tl) {
+      width: 167px;
       height: 167px;
     }
 
@@ -306,80 +298,78 @@
       width: 200px;
       height: 200px;
     }
-  }
 
-  &__swiper-button-next {
-    position: relative;
-    z-index: 100;
-    width: 32px;
-    height: 32px;
-    margin-bottom: 0;
-    color: var(--white);
-    transform: rotate(180deg);
-
-    @media screen and (min-width: $screen-d) {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 48px;
-    }
-
-    &:hover {
-      animation: arrow-hover 1.5s infinite !important;
-    }
-
-    @keyframes arrow-hover {
-      0% {
-        left: 0;
-      }
-
-      40% {
-        left: 10px;
-      }
-
-      80% {
-        left: 0;
-      }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
     }
   }
 
-  &__swiper-button-prev {
-    position: relative;
-    z-index: 100;
-    width: 32px;
-    height: 32px;
-
-    @media screen and (min-width: $screen-d) {
-      width: 48px;
-      height: 48px;
-    }
-
-    &:hover {
-      animation: arrow-hover-prev 1.5s infinite !important;
-    }
-
-    @keyframes arrow-hover-prev {
-      0% {
-        right: 0;
-      }
-
-      40% {
-        right: 10px;
-      }
-
-      80% {
-        right: 0;
-      }
-    }
-  }
-
-  &__paginator {
+  &__right {
     display: flex;
-    gap: 0 20px;
-    justify-content: center;
-    width: calc(100% - 40px);
-    margin-top: 85px;
+    gap: 0 32px;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 32px;
+    margin-bottom: -75px;
 
     @media screen and (min-width: $screen-ti) {
+      width: calc(50% - 30px);
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      margin-top: 0;
+      margin-bottom: -100px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      max-width: 628px;
+      margin-bottom: -100px;
+    }
+  }
+
+  &__slider-main {
+    @media screen and (min-width: $screen-ti) {
+      order: 2;
+    }
+  }
+
+  &__main-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 271px;
+
+    @media screen and (min-width: $screen-tl) {
+      width: 540px;
+      height: 540px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      min-height: 271px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+  }
+
+  &__arrows-main {
+    display: none;
+
+    @media screen and (min-width: $screen-ti) {
+      display: flex;
+    }
+  }
+
+  &__arrows-right {
+    display: block;
+    order: 1;
+    margin-bottom: 29px;
+
+    @media screen and (min-width: $screen-tl) {
       display: none;
     }
   }

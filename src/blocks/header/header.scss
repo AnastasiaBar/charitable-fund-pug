@@ -5,6 +5,7 @@
   $block-name: &; // #{$block-name}__element
 
   position: relative;
+  z-index: 1000;
   padding: 20px 0 25px;
   background: var(--white, #fff);
 
@@ -76,6 +77,11 @@
   &__social-network-icon {
     width: 48px;
     height: 48px;
+    transition: 0.3s ease-out;
+
+    &:hover {
+      filter: grayscale(100%);
+    }
   }
 
   &__burger {

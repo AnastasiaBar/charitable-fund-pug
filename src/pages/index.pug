@@ -8,84 +8,109 @@ block variables
 
 block content
 
-  .hero
-    .hero__main-slider.swiper-container
-      .swiper-wrapper
-        -
-          let sliderTop = [
-            {
-              title: '2 605 детей',
-              subTitle: 'за все время р аботы фонда получили помощь и возможность заниматься спортом',
-              imgUrl: '../img/hero__image-03.png',
-              colorSlide: '#B3315E',
-              details: true
-            },
-            {
-              title: 'Пас в будущее',
-              subTitle: 'Наша цель – дать возможность талантливым ребятам, увлеченным спортом, проявить свои способности',
-              imgUrl: '../img/hero__image-01.png',
-              colorSlide: '#dc9138',
-              details: false
-            },
-            {
-              smallHeadline: 'Фонд передал футбольную площадку Центру помощи детям «Ручеёк»',
-              subTitle: '',
-              imgUrl: '../img/hero__image-02.png',
-              colorSlide: '#067256',
-              details: true
-            }
-          ]
+  -
+    var slidersMain = [
+      {
+        title: '2 605 детей',
+        subTitle: 'за все время работы фонда получили помощь и возможность заниматься спортом',
+        slideMain: '../img/hero__image-01.png',
+        galleryPhoto1: '../img/hero__image-02.png',
+        galleryPhoto2: '../img/hero__image-03.png',
+        colorSlide: '#B3315E',
+        details: true
+      },
+      {
+        title: 'Пас в будущее',
+        subTitle: 'Наша цель – дать возможность талантливым ребятам, увлеченным спортом, проявить свои способности',
+        slideMain: '../img/hero__image-02.png',
+        galleryPhoto1: '../img/hero__image-03.png',
+        galleryPhoto2: '../img/hero__image-01.png',
+        colorSlide: '#dc9138',
+        details: false
+      },
+      {
+        smallHeadline: 'Фонд передал футбольную площадку Центру помощи детям «Ручеёк»',
+        subTitle: '',
+        slideMain: '../img/hero__image-03.png',
+        galleryPhoto1: '../img/hero__image-01.png',
+        galleryPhoto2: '../img/hero__image-02.png',
+        colorSlide: '#067256',
+        details: true
+      }
+    ]
 
-        each slide in sliderTop
-          .hero__slide.swiper-slide
-            .hero__slide-padding(style='background:' + slide.colorSlide)
-              .container
-                .hero__inner
-                  .hero__nav
-                    each val, key in {about: "О Фонде", programs: "Программы", reviews: "Благодарности", pressCenter: "Пресс-центр", activity: "Мероприятия", contacts: "Контакты"}
-                      a.link.hero__nav-link(href='#' + key)= val
-                  .hero__project-assistance
-                    +heart-animation('white')
-                    p.hero__project-assistance-text Хочу помочь
-                .hero__slider-inner
-                  .hero__info
+  .hero
+    .hero__container-decor
+      +blob-bottom
+      +blob-bottom.hero__decor-top-disabled
+      +blob-bottom.hero__decor-bottom-disabled
+    .hero__wrapper
+      .container
+        .hero__container-flex
+          nav.hero__nav
+            each val, key in {about: "О Фонде", programs: "Программы", reviews: "Благодарности", pressCenter: "Пресс-центр", activity: "Мероприятия", contacts: "Контакты"}
+              a.link.hero__nav-link(href='#' + key)= val
+          .hero__heart-button
+            +heart-animation('white')
+            p.hero__text Хочу помочь
+          svg.hero__icon-decor-top(viewBox='0 0 500 500', id='icon__blob-top', transform='rotate(120)')
+            path(id='blob', fill='#981140', style='opacity: 1;')
+              animate(attributeName='d', dur='11s', repeatCount='indefinite', values='M415.01911,310.8863Q439.5452,371.7726,388.0904,405.2945Q336.6356,438.8164,280.7726,433.452Q224.9096,428.08761,185.95759,398.74511Q147.00559,369.40261,129.05219,330.15471Q111.09878,290.9068,102.89189,247.863Q94.68499,204.8192,97.4315,140.3164Q100.17801,75.81361,160.4068,60.51771Q220.6356,45.22181,275.226,60.1356Q329.8164,75.04939,372.9534,109.3658Q416.0904,143.6822,403.29171,196.8411Q390.49301,250,415.01911,310.8863Z;M394.89432,291.86359Q379.96349,333.72718,354.5999,379.04899Q329.23631,424.37079,274.96542,439.22911Q220.69452,454.08742,185.59462,409.0927Q150.49472,364.09798,125.7075,328.96349Q100.92028,293.82901,59.42363,237.80355Q17.92698,181.77809,66.30163,137.5999Q114.67627,93.42171,168.36359,75.4145Q222.05091,57.4073,282.76369,51.5999Q343.47647,45.7925,374.93276,97.57444Q406.38905,149.35639,408.1071,199.67819Q409.82516,250,394.89432,291.86359Z;M456.0768,303.76136Q418.13543,357.52271,379.98225,404.29316Q341.82907,451.0636,284.01817,433.65772Q226.20727,416.25185,163.99091,418.54046Q101.77456,420.82907,62.72047,368.86953Q23.66638,316.90999,61.99091,261.65772Q100.31545,206.40545,118.97771,163.62635Q137.63998,120.84725,179.51817,86.26136Q221.39637,51.67547,267.19818,81.83773Q313,112,367.68455,125.86045Q422.36911,139.7209,458.19364,194.86045Q494.01817,250,456.0768,303.76136Z;M430.80624,308.72934Q432.1339,367.45868,372.72647,377.66948Q313.31905,387.88027,263.72647,442.80911Q214.1339,497.73795,154.61821,463.08837Q95.10253,428.43879,60.15953,372.16526Q25.21653,315.89174,60.3661,260.16239Q95.51568,204.43305,120.04418,166.21939Q144.57268,128.00574,181.94874,82.19376Q219.32479,36.38179,273.74216,57.19376Q328.15953,78.00574,384.05413,102.85329Q439.94874,127.70084,434.71366,188.85042Q429.47858,250,430.80624,308.72934Z;M415.01911,310.8863Q439.5452,371.7726,388.0904,405.2945Q336.6356,438.8164,280.7726,433.452Q224.9096,428.08761,185.95759,398.74511Q147.00559,369.40261,129.05219,330.15471Q111.09878,290.9068,102.89189,247.863Q94.68499,204.8192,97.4315,140.3164Q100.17801,75.81361,160.4068,60.51771Q220.6356,45.22181,275.226,60.1356Q329.8164,75.04939,372.9534,109.3658Q416.0904,143.6822,403.29171,196.8411Q390.49301,250,415.01911,310.8863Z')
+        .hero__inner
+          .hero__left
+            .swiper-container.hero__info.slider
+              .swiper-wrapper
+                each slide in slidersMain
+                  .swiper-slide
                     if slide.title
                       h2.hero__info-title= slide.title
                     if slide.smallHeadline
-                      h2.hero__info-small-headline= slide.smallHeadline
-                    p.hero__info-subtitle= slide.subTitle
-                    if slide.details
-                      a.hero__info-link.link(href='#') Подробнее
-                  .hero__image
-                    img(src=slide.imgUrl, alt='')
+                      h3.hero__info-smallTitle= slide.smallHeadline
+                    if slide.subTitle
+                      p.hero__info-subtitle= slide.subTitle
+                    a.hero__info-link.link(href='#') Подробнее
+            .hero__slider-gallery
+              .hero__container-sliders
+                .swiper-container.hero__slider-small-01.slider
+                  .swiper-wrapper
+                    each slide in slidersMain
+                      .swiper-slide.hero__gallery-photo
+                        img(src= slide.galleryPhoto1, alt='')
+                .swiper-container.hero__slider-small-02.slider
+                  .swiper-wrapper
+                    each slide in slidersMain
+                      .swiper-slide.hero__gallery-photo
+                        img(src= slide.galleryPhoto2, alt='')
+              .hero__arrows.hero__arrows-main
+                +slider-arrows
+          .hero__right
+            .swiper-container.hero__slider-main.slider
+              .swiper-wrapper
+                each slide in slidersMain
+                  .swiper-slide.hero__main-photo
+                    img(src= slide.slideMain, alt='')
+            .hero__arrows.hero__arrows-main.hero__arrows-right
+              +slider-arrows
 
-                    .hero__arrows.hero__arrows-main
-                      svg.hero__swiper-button-next
-                        use(xlink:href='img/svgSprite.svg#icon__arrow')
-                      svg.hero__swiper-button-prev
-                        use(xlink:href='img/svgSprite.svg#icon__arrow')
-                .swiper-pagination.hero__paginator
+  .about
     .container
-      .hero__container-flex
-        .hero__slider-gallery.swiper-container
-          .swiper-wrapper
-            -
-              let slidesGallery = [
-                {
-                  imgUrl: '../img/hero__image-03.png',
-                },
-                {
-                  imgUrl: '../img/hero__image-01.png',
-                },
-                {
-                  imgUrl: '../img/hero__image-02.png',
-                }
-              ]
-            each slide in slidesGallery
-              .swiper-slide
-                  img.hero__slide-photo(src=slide.imgUrl, alt='')
-        .hero__arrows
-          svg.hero__swiper-button-next
-            use(xlink:href='img/svgSprite.svg#icon__arrow')
-          svg.hero__swiper-button-prev
-            use(xlink:href='img/svgSprite.svg#icon__arrow')
+      .about__inner
+        .about__container-title
+          h1.about__title Вместе мы можем больше!
+          .about__blob--pink
+          .about__blob--yellow
+        .about__info
+          h3.about__info-text  Благотворительный фонд — это благотворительная организация безвозмездной помощи, созданная в целях поддержки детско-юношеского спорта, адресной помощи талантливым спортсменам, помощи детям-сиротами детям, находящимся в сложной жизненной ситуации.
+          a.about__button(href='#') Подробнее о Фонде
+            svg.about__social-network-icon.rotate-arrow
+              use(xlink:href='img/svgSprite.svg#icon__arrow')
+      .about__company-plans
+        .about__item
+          h3.about__item-title.about__item-title--pink Миссия
+          p.about__item-text Мы помогаем детям развивать спортивные и интеллектуальные способности. Заботимся о заслуженных ветеранах спорта, укрепляя традиции чемпионов и преемствен-ность поколений
+        .about__item
+          h3.about__item-title.about__item-title--yellow Цель
+          p.about__item-text Оказание всесторонней помощи детям для раскрытия спортивного и интеллектуального потенциала
+        .about__item
+          h3.about__item-title.about__item-title--green Задача
+          p.about__item-text Реализация проектов для поддержки детей в сложной жизненной ситуации и популяризация детско-юношеского спорта

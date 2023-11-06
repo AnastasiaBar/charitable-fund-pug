@@ -2,7 +2,7 @@
   $block-name: &; // #{$block-name}__element
 
   text-decoration: none;
-  transition: 0.3s ease-out !important;
+  transition: 0.3s ease-out;
 
   &:hover {
     opacity: 0.7;

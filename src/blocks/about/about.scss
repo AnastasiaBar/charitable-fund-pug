@@ -1,0 +1,258 @@
+@import "../../scss/breakpoints";
+
+.about {
+  $block-name: &; // #{$block-name}__element
+
+  padding: 140px 0 96px;
+
+  @media screen and (min-width: $screen-tl) {
+    padding: 272px 0 140px;
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 113px;
+    justify-content: space-between;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--grey-line, #c7c7c7);
+
+    @media screen and (min-width: $screen-tl) {
+      flex-wrap: nowrap;
+      padding-bottom: 75px;
+    }
+  }
+
+  &__container-title {
+    position: relative;
+    margin-bottom: 28px;
+    overflow: hidden;
+
+    @media screen and (min-width: $screen-tl) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-weight: 700;
+    font-size: 60px;
+    font-family: var(--font-sourceserif);
+    line-height: 60px; /* 100% */
+    background: var(--white, #fff);
+
+    @media screen and (min-width: $screen-tl) {
+      width: 450px;
+      font-size: 100px;
+      line-height: 110px; /* 110% */
+    }
+
+    @media screen and (min-width: $screen-d) {
+      width: 520px;
+    }
+
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--green, #1f7b5c);
+      mix-blend-mode: screen;
+      content: "";
+    }
+  }
+
+  &__blob--pink,
+  &__blob--yellow {
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 210px;
+    animation: blobs 10s ease-in-out infinite;
+
+    @media screen and (min-width: $screen-tl) {
+      width: 295px;
+      height: 185px;
+    }
+  }
+
+  &__blob--pink {
+    top: -50px;
+    left: 130px;
+    background: var(--pink, #d91869);
+    mix-blend-mode: color;
+
+    @media screen and (min-width: $screen-t) {
+      right: 0;
+      left: auto;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      top: 0;
+      right: auto;
+      left: 175px;
+    }
+  }
+
+  &__blob--yellow {
+    top: 80px;
+    left: -90px;
+    background: var(--yellow, #f2a84f);
+    mix-blend-mode: lighten;
+
+    @media screen and (min-width: $screen-t) {
+      top: 0;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      top: 145px;
+      left: -115px;
+    }
+  }
+
+  &__info {
+    width: 100%;
+
+    @media screen and (min-width: $screen-tl) {
+      width: calc(100% - 450px - 113px);
+    }
+
+    @media screen and (min-width: $screen-d) {
+      width: calc(100% - 520px - 113px);
+    }
+  }
+
+  &__info-text {
+    margin: 0;
+    color: var(--black, #000);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px; /* 144.444% */
+
+    @media screen and (min-width: $screen-tl) {
+      font-size: 32px;
+      line-height: 44px; /* 137.5% */
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 0 24px;
+    align-items: center;
+    margin-top: 45px;
+    color: var(--pink, #d91869);
+    font-size: 16px;
+    line-height: 24px; /* 150% */
+    text-decoration: none;
+
+    @media screen and (min-width: $screen-tl) {
+      margin-top: 87px;
+      font-size: 18px;
+      line-height: 26px; /* 150% */
+    }
+
+    &:hover {
+      .rotate-arrow {
+        transform: rotate(540deg);
+      }
+    }
+  }
+
+  &__social-network-icon {
+    width: 32px;
+    height: 32px;
+    transform: rotate(180deg);
+    transition: 0.4s ease-out;
+
+    @media screen and (min-width: $screen-tl) {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__company-plans {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    justify-content: space-between;
+    margin-top: 48px;
+
+    @media screen and (min-width: $screen-tl) {
+      flex-wrap: nowrap;
+      gap: 0 80px;
+      margin-top: 72px;
+    }
+  }
+
+  &__item {
+    width: 100%;
+
+    @media screen and (min-width: $screen-tl) {
+      width: calc(100% / 3);
+    }
+  }
+
+  &__item-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 28px;
+    font-family: var(--font-sourceserif);
+    line-height: 32px; /* 114.286% */
+
+    @media screen and (min-width: $screen-tl) {
+      font-size: 32px;
+      line-height: 40px; /* 125% */
+    }
+
+    &--pink {
+      color: var(--pink, #d91869);
+    }
+
+    &--yellow {
+      color: var(--yellow, #f2a84f);
+    }
+
+    &--green {
+      color: var(--green, #1f7b5c);
+    }
+  }
+
+  &__item-text {
+    margin: 20px 0 0;
+    font-size: 16px;
+    line-height: 24px; /* 150% */
+
+    @media screen and (min-width: $screen-tl) {
+      margin: 24px 0 0;
+      font-size: 24px;
+      line-height: 32px; /* 133.333% */
+    }
+  }
+
+  @keyframes blobs {
+    0% {
+      border-radius: 74% 26% 47% 53% / 68% 46% 54% 32%;
+    }
+
+    20% {
+      border-radius: 48% 52% 30% 70% / 27% 37% 63% 73%;
+    }
+
+    40% {
+      border-radius: 63% 37% 56% 44% / 25% 28% 72% 75%;
+    }
+
+    60% {
+      border-radius: 27% 73% 29% 71% / 73% 51% 49% 27%;
+    }
+
+    80% {
+      border-radius: 25% 75% 70% 30% / 39% 50% 50% 61%;
+    }
+
+    100% {
+      border-radius: 66% 34% 33% 67% / 65% 73% 27% 35%;
+    }
+  }
+}
