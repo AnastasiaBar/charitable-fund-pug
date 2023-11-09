@@ -1,0 +1,306 @@
+@import "../../scss/breakpoints";
+
+.founders {
+  padding: 96px 0 88px;
+  background: var(--green, #1f7b5c);
+
+  @media screen and (min-width: $screen-m) {
+    padding: 32px 0 76px;
+  }
+
+  @media screen and (min-width: $screen-d) {
+    padding: 96px 0 88px;
+  }
+
+  .hide {
+    display: none;
+
+    @media screen and (min-width: $screen-m) {
+      display: block;
+    }
+
+    @media screen and (min-width: $screen-ti) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 50px;
+      align-items: flex-end;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      display: none;
+    }
+  }
+
+  .show {
+    display: block;
+
+    @media screen and (min-width: $screen-ti) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 50px;
+      align-items: flex-end;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      display: block;
+    }
+  }
+
+  &__title {
+    color: var(--white, #fff);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px; /* 150% */
+
+    @media screen and (min-width: $screen-m) {
+      font-size: 20px;
+      line-height: 30px; /* 150% */
+    }
+
+    @media screen and (min-width: $screen-d) {
+      font-size: 32px;
+      line-height: 48px; /* 150% */
+    }
+  }
+
+  &__inner {
+    display: flex;
+    gap: 0 148px;
+    justify-content: space-between;
+    margin-top: 64px;
+
+    @media screen and (min-width: $screen-m) {
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      flex-wrap: nowrap;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      margin-top: 64px;
+    }
+  }
+
+  &__left {
+    white-space: nowrap;
+
+    @media screen and (min-width: $screen-m) {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      display: block;
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 48px;
+    padding-left: 40px;
+    color: var(--white, #fff);
+    cursor: pointer;
+    opacity: 0.7;
+
+    @media screen and (min-width: $screen-m) {
+      padding: 0;
+      opacity: 1;
+    }
+
+    @media screen and (min-width: $screen-ti) {
+      width: 100%;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      padding-left: 40px;
+      opacity: 0.7;
+    }
+
+    &.active {
+      border-left: 2px solid var(--white);
+      opacity: 1;
+
+      @media screen and (min-width: $screen-m) {
+        border-left: 0;
+      }
+
+      @media screen and (min-width: $screen-tl) {
+        border-left: 2px solid var(--white);
+      }
+    }
+  }
+
+  &__name-mobile {
+    @media screen and (min-width: $screen-tl) {
+      display: none;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: 700;
+    font-size: 40px;
+    font-family: var(--font-sourceserif);
+    line-height: 48px; /* 120% */
+
+    @media screen and (min-width: $screen-m) {
+      font-size: 28px;
+      line-height: 32px; /* 114.286% */
+    }
+
+    @media screen and (min-width: $screen-d) {
+      font-size: 40px;
+      line-height: 48px; /* 114.286% */
+    }
+  }
+
+  &__post {
+    margin: 16px 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px; /* 157.143% */
+
+    @media screen and (min-width: $screen-m) {
+      font-size: 14px;
+      line-height: 22px; /* 157.143% */
+      opacity: 0.7;
+    }
+  }
+
+  &__right {
+    width: 628px;
+
+    @media screen and (min-width: $screen-m) {
+      width: 100%;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      width: 540px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      width: 628px;
+    }
+  }
+
+  &__container-tab {
+    display: block;
+
+    @media screen and (min-width: $screen-m) {
+      margin-bottom: 100px;
+    }
+
+    @media screen and (min-width: $screen-ti) {
+      margin-bottom: 10px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      @media screen and (min-width: $screen-m) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+
+    @media screen and (min-width: $screen-m) {
+      aspect-ratio: auto;
+    }
+
+    @media screen and (min-width: $screen-t) {
+      max-height: 412px;
+    }
+
+    @media screen and (min-width: $screen-ti) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      width: 100%;
+    }
+  }
+
+  &__text {
+    margin: 64px 0 53px;
+    color: var(--white);
+    font-size: 32px;
+    line-height: 44px; /* 137.5% */
+
+    @media screen and (min-width: $screen-m) {
+      margin: 48px 0 0;
+      font-size: 18px;
+      line-height: 26px; /* 144.444% */
+    }
+
+    @media screen and (min-width: $screen-ti) {
+      width: calc(50% - 50px);
+      margin: 0;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      width: 100%;
+      margin: 48px 0 0;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      width: 100%;
+      margin: 64px 0 53px;
+    }
+  }
+
+  &__container-signature {
+    display: flex;
+    justify-content: flex-end;
+
+    @media screen and (min-width: $screen-m) {
+      width: auto;
+    }
+
+    @media screen and (min-width: $screen-ti) {
+      width: 100%;
+    }
+  }
+
+  &__signature {
+    &--first {
+      width: 366px;
+      height: 215px;
+
+      @media screen and (min-width: $screen-m) {
+        width: 160px;
+        height: 160px;
+        background-size: 160px;
+      }
+
+      @media screen and (min-width: $screen-d) {
+        width: 366px;
+        height: 215px;
+      }
+    }
+
+    &--second {
+      width: 268px;
+      height: 136px;
+
+      @media screen and (min-width: $screen-m) {
+        width: 160px;
+        height: 160px;
+        background-size: 160px;
+      }
+
+      @media screen and (min-width: $screen-d) {
+        width: 268px;
+        height: 136px;
+      }
+    }
+  }
+  $block-name: &; // #{$block-name}__element
+}

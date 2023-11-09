@@ -1,0 +1,24 @@
+.signature-animation {
+  $block-name: &; // #{$block-name}__element
+
+  opacity: 0;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  .animate & {
+    opacity: 1;
+    animation-name: line;
+  }
+
+  .disabled & {
+    opacity: 1;
+    animation: none;
+    stroke-dashoffset: 1;
+  }
+
+  @keyframes line {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+}

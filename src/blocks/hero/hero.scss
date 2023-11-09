@@ -132,8 +132,12 @@
     transform: scale(1.2);
 
     @media screen and (min-width: $screen-d) {
-      right: -50px;
+      right: 0;
       display: block;
+    }
+
+    @media screen and (min-width: $screen-dl) {
+      right: -50px;
     }
   }
 
@@ -264,7 +268,7 @@
 
   &__slider-gallery {
     display: none;
-    gap: 0 148px;
+    gap: 0 102px;
     align-items: center;
     margin-bottom: -100px;
 
@@ -275,6 +279,7 @@
     }
 
     @media screen and (min-width: $screen-d) {
+      gap: 0 148px;
       align-items: center;
       margin-bottom: -100px;
     }
@@ -283,7 +288,11 @@
   &__container-sliders {
     display: flex;
     gap: 0 20px;
-    width: calc(100% - 195px);
+    width: calc(100% - 134px);
+
+    @media screen and (min-width: $screen-d) {
+      width: calc(100% - 168px);
+    }
   }
 
   &__gallery-photo {
@@ -304,6 +313,7 @@
       height: 100%;
       object-fit: cover;
       border-radius: 4px;
+      aspect-ratio: 1 / 1;
     }
   }
 
@@ -340,7 +350,7 @@
   &__main-photo {
     width: 100%;
     height: 100%;
-    min-height: 271px;
+    //min-height: 271px;
 
     @media screen and (min-width: $screen-tl) {
       width: 540px;
@@ -353,6 +363,7 @@
       min-height: 271px;
       object-fit: cover;
       border-radius: 4px;
+      aspect-ratio: 1 / 1;
     }
   }
 

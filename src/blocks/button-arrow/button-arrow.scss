@@ -1,0 +1,27 @@
+.button-arrow {
+  display: flex;
+  gap: 0 24px;
+  align-items: center;
+  width: fit-content;
+  color: var(--pink, #d91869);
+  font-size: 16px;
+  line-height: 24px; /* 150% */
+  text-decoration: none;
+  transition: 0.3s ease-out;
+
+  @media screen and (min-width: $screen-tl) {
+    font-size: 18px;
+    line-height: 26px; /* 150% */
+  }
+
+  .rotate-arrow {
+    position: relative;
+    left: 0;
+    transition: 0.3s ease-out;
+  }
+  $block-name: &; // #{$block-name}__element
+}
+
+.button-arrow:hover .rotate-arrow {
+  left: 10px;
+}
