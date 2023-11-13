@@ -1,7 +1,5 @@
-@import "../../scss/breakpoints";
-
 .buttons {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   padding: 12px 24px;
   font-weight: 500;

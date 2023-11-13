@@ -1,19 +1,13 @@
 @import "../../scss/breakpoints";
 
 .slider-arrows {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   &__inner {
-    @media screen and (min-width: $screen-m) {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      width: min-content;
-    }
-
-    @media screen and (min-width: $screen-ti) {
-      margin-top: 0;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: min-content;
 
     @media screen and (min-width: $screen-tl) {
       gap: 48px;
@@ -27,66 +21,36 @@
     }
   }
 
-  &__swiper-button-next {
-    position: relative;
-    z-index: 100;
-    width: 32px;
-    height: 32px;
-    margin-bottom: 0;
-    color: var(--white);
-    transform: rotate(180deg);
-
-    @media screen and (min-width: $screen-d) {
-      width: 48px;
-      height: 48px;
-    }
-
-    &:hover {
-      animation: arrow-hover 1.5s infinite;
-    }
-
-    @keyframes arrow-hover {
-      0% {
-        left: 0;
-      }
-
-      40% {
-        left: 10px;
-      }
-
-      80% {
-        left: 0;
-      }
-    }
-  }
-
+  &__swiper-button-next,
   &__swiper-button-prev {
     position: relative;
     z-index: 100;
     width: 32px;
     height: 32px;
+    transition: 0.3s ease-out;
 
     @media screen and (min-width: $screen-d) {
       width: 48px;
       height: 48px;
     }
+  }
+
+  &__swiper-button-next {
+    left: 0;
+    margin-bottom: 0;
+    color: var(--white);
+    transform: rotate(180deg);
 
     &:hover {
-      animation: arrow-hover-prev 1.5s infinite;
+      left: 10px;
     }
+  }
 
-    @keyframes arrow-hover-prev {
-      0% {
-        right: 0;
-      }
+  &__swiper-button-prev {
+    right: 0;
 
-      40% {
-        right: 10px;
-      }
-
-      80% {
-        right: 0;
-      }
+    &:hover {
+      right: 10px;
     }
   }
 }

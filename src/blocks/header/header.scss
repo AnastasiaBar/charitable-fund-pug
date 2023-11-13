@@ -2,7 +2,7 @@
 @import "../../scss/mixins/fluid";
 
 .header {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   position: relative;
   z-index: 1000;

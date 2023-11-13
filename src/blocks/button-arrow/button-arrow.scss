@@ -1,3 +1,5 @@
+@import "../../scss/breakpoints";
+
 .button-arrow {
   display: flex;
   gap: 0 24px;
@@ -5,21 +7,29 @@
   width: fit-content;
   color: var(--pink, #d91869);
   font-size: 16px;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
   text-decoration: none;
   transition: 0.3s ease-out;
 
   @media screen and (min-width: $screen-tl) {
     font-size: 18px;
-    line-height: 26px; /* 150% */
+    line-height: 26px;
   }
 
   .rotate-arrow {
     position: relative;
     left: 0;
+    width: 32px;
+    height: 32px;
+    transform: rotate(180deg);
     transition: 0.3s ease-out;
+
+    @media screen and (min-width: $screen-d) {
+      width: 48px;
+      height: 48px;
+    }
   }
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 }
 
 .button-arrow:hover .rotate-arrow {

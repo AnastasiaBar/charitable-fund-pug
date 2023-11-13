@@ -1,8 +1,6 @@
 @import "../../scss/breakpoints";
 
 .news {
-  $block-name: &; // #{$block-name}__element
-
   padding: 42px 0 48px;
 
   @media screen and (min-width: $screen-d) {
@@ -35,22 +33,8 @@
     }
   }
 
-  &__title {
-    margin: 0;
-    color: var(--black, #000);
-    font-weight: 500;
-    font-size: 20px;
-    font-family: var(--font-roboto);
-    line-height: 30px; /* 150% */
-
-    @media screen and (min-width: $screen-d) {
-      font-size: 32px;
-      line-height: 48px; /* 150% */
-    }
-  }
-
   &__inner {
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     gap: 0 80px;
     justify-content: space-between;
@@ -61,66 +45,147 @@
       gap: 0 50px;
     }
 
-    @media screen and (min-width: $screen-d) {
+    @media screen and (min-width: $screen-tl) {
+      display: flex;
       gap: 0 80px;
       margin-top: 40px;
     }
   }
 
   &__left {
+    position: relative;
     display: flex;
     flex-shrink: 0;
     flex-wrap: wrap;
     align-items: flex-end;
     width: 100%;
-    height: 225px;
-    min-height: auto;
-    padding: 48px;
-    background-image: url("../img/news__photo--01.png");
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: contain;
 
     @media screen and (min-width: $screen-ti) {
-      width: 40%;
       height: auto;
-      min-height: 260px;
-      max-height: none;
-      object-fit: cover;
-      background-position: top;
+      max-height: 470px;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      align-items: flex-start;
+      width: 824px;
+      max-width: 70%;
+      max-height: 470px;
     }
 
     @media screen and (min-width: $screen-d) {
-      width: 824px;
       min-height: 550px;
-      max-height: none;
+    }
+
+    &:hover {
+      .news-hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__container-photo {
+    width: 100%;
+    height: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    overflow: hidden;
+    line-height: 0;
+
+    @media screen and (min-width: $screen-tl) {
+      max-height: 470px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      max-height: 550px;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-height: 460px;
+      background: linear-gradient(358deg, rgb(15 15 16 / 74%) 3.69%, rgb(0 0 0 / 0%) 44.09%);
+      content: "";
+
+      @media screen and (min-width: $screen-tl) {
+        max-height: 470px;
+      }
+
+      @media screen and (min-width: $screen-d) {
+        max-height: 550px;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    transition: 0.3s ease-out;
+    aspect-ratio: 1 / 1;
+
+    @media screen and (min-width: $screen-ti) {
+      max-height: 580px;
+    }
+
+    @media screen and (min-width: $screen-tl) {
+      min-height: 470px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      min-height: 550px;
     }
   }
 
   &__info {
+    position: relative;
+    bottom: 0;
     display: none;
+    text-decoration: none;
 
-    @media screen and (min-width: $screen-d) {
+    @media screen and (min-width: $screen-tl) {
+      position: absolute;
       display: block;
+      padding: 48px;
     }
   }
 
   &__data-active {
-    width: 100%;
-    margin-bottom: 20px;
+    margin: 0;
     color: var(--color, #fff);
-    font-size: 24px;
-    line-height: 32px; /* 133.333% */
+    font-size: 14px;
+    line-height: 22px;
+
+    @media screen and (min-width: $screen-d) {
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
 
   &__text-active {
-    width: 100%;
     margin: 0;
     color: var(--color, #fff);
     font-weight: 700;
-    font-size: 32px;
+    font-size: 20px;
     font-family: var(--font-sourceserif);
-    line-height: 40px; /* 125% */
+    line-height: 26px;
+
+    @media screen and (min-width: $screen-tl) {
+      margin-top: 20px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      width: 100%;
+      margin: 0;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+    }
   }
 
   &__right {
@@ -132,25 +197,53 @@
   }
 
   &__item {
+    display: block;
     margin-bottom: 48px;
+    color: var(--black, #000);
+    text-decoration: none;
+    transition: 0.3s ease-out;
 
     @media screen and (min-width: $screen-tl) {
       margin-bottom: 40px;
     }
 
-    &:nth-child(3) {
-      margin-bottom: 0;
+    &:hover {
+      color: #d91869;
+    }
 
+    &--mobile {
+      @media screen and (min-width: $screen-tl) {
+        display: none;
+      }
+    }
+
+    &:first-child {
+      display: block;
+
+      @media screen and (min-width: $screen-tl) {
+        display: none;
+        margin-bottom: 40px;
+      }
+    }
+
+    &:nth-child(3) {
       @media screen and (min-width: $screen-d) {
         margin-bottom: 40px;
       }
     }
 
     &:nth-child(4) {
-      margin-bottom: 0;
+      display: none;
 
-      @media screen and (min-width: $screen-t) {
-        display: none;
+      @media screen and (min-width: $screen-d) {
+        display: block;
+        margin-bottom: 40px;
+      }
+    }
+
+    &:nth-child(5) {
+      @media screen and (min-width: $screen-tl) {
+        margin-bottom: 0;
       }
 
       @media screen and (min-width: $screen-d) {
@@ -164,7 +257,7 @@
     margin: 0 0 8px;
     color: #7e7e7e;
     font-size: 14px;
-    line-height: 22px; /* 157.143% */
+    line-height: 22px;
   }
 
   &__item-title {
@@ -172,11 +265,12 @@
     font-weight: 700;
     font-size: 20px;
     font-family: var(--font-sourceserif);
-    line-height: 26px; /* 130% */
+    line-height: 26px;
 
     @media screen and (min-width: $screen-d) {
       font-size: 24px;
-      line-height: 30px; /* 125% */
+      line-height: 30px;
     }
   }
+  $block-name: &;
 }

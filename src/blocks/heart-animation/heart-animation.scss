@@ -1,5 +1,5 @@
 .heart-animation {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   position: relative;
 
@@ -8,7 +8,7 @@
     z-index: 20;
     width: 32px;
     height: 32px;
-    animation: heart-animation 2.5s ease 0s infinite !important;
+    animation: heart-animation 2.5s ease 0s infinite;
   }
 
   &__block--white &__icon {
@@ -44,12 +44,12 @@
 
   &::before {
     opacity: 0.15;
-    animation: heart-before 2.5s ease 100ms infinite !important;
+    animation: heart-before 2.5s ease 100ms infinite;
   }
 
   &::after {
     opacity: 0.25;
-    animation: heart-after 2.5s ease 200ms infinite !important;
+    animation: heart-after 2.5s ease 200ms infinite;
   }
 
   @keyframes heart-animation {

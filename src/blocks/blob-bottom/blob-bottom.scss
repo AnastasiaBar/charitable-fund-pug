@@ -1,12 +1,12 @@
 @import "../../scss/breakpoints";
 
 .blob-bottom {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   &__icon-decor-bottom {
     position: absolute;
     z-index: 20;
-    color: #dc9138;
+    color: var(--blob-color, #dc9138);
     transform: scale(1);
     transition: 1.2s ease;
 

@@ -1,7 +1,7 @@
 @import "../../scss/breakpoints";
 
 .about {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   padding: 140px 0 96px;
 
@@ -19,7 +19,7 @@
 
     @media screen and (min-width: $screen-tl) {
       flex-wrap: nowrap;
-      gap: 0 50px;
+      gap: 0 85px;
       padding-bottom: 75px;
     }
 
@@ -34,6 +34,7 @@
     overflow: hidden;
 
     @media screen and (min-width: $screen-tl) {
+      width: calc(100% - 50px);
       margin-bottom: 0;
     }
   }
@@ -45,17 +46,21 @@
     font-weight: 700;
     font-size: 60px;
     font-family: var(--font-sourceserif);
-    line-height: 60px; /* 100% */
+    line-height: 60px;
     background: var(--white, #fff);
 
+    @media screen and (min-width: $screen-ti) {
+      width: 550px;
+    }
+
     @media screen and (min-width: $screen-tl) {
-      width: 450px;
+      width: 100%;
     }
 
     @media screen and (min-width: $screen-d) {
-      width: 520px;
+      width: 720px;
       font-size: 100px;
-      line-height: 110px; /* 110% */
+      line-height: 110px;
     }
 
     &::before {
@@ -111,6 +116,11 @@
     }
 
     @media screen and (min-width: $screen-tl) {
+      top: 50px;
+      left: -115px;
+    }
+
+    @media screen and (min-width: $screen-d) {
       top: 145px;
       left: -115px;
     }
@@ -120,11 +130,12 @@
     width: 100%;
 
     @media screen and (min-width: $screen-tl) {
-      width: calc(100% - 450px - 70px);
+      max-width: 540px;
     }
 
     @media screen and (min-width: $screen-d) {
-      width: calc(100% - 520px - 113px);
+      min-width: 628px;
+      max-width: 628px;
     }
   }
 
@@ -133,11 +144,16 @@
     color: var(--black, #000);
     font-weight: 400;
     font-size: 18px;
-    line-height: 26px; /* 144.444% */
+    line-height: 26px;
+
+    @media screen and (min-width: $screen-tl) {
+      max-width: 540px;
+    }
 
     @media screen and (min-width: $screen-d) {
+      max-width: 628px;
       font-size: 32px;
-      line-height: 44px; /* 137.5% */
+      line-height: 44px;
     }
   }
 
@@ -191,11 +207,11 @@
     font-weight: 700;
     font-size: 28px;
     font-family: var(--font-sourceserif);
-    line-height: 32px; /* 114.286% */
+    line-height: 32px;
 
     @media screen and (min-width: $screen-d) {
       font-size: 32px;
-      line-height: 40px; /* 125% */
+      line-height: 40px;
     }
 
     &--pink {
@@ -214,12 +230,12 @@
   &__item-text {
     margin: 20px 0 0;
     font-size: 16px;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
 
     @media screen and (min-width: $screen-d) {
       margin: 24px 0 0;
       font-size: 24px;
-      line-height: 32px; /* 133.333% */
+      line-height: 32px;
     }
   }
 

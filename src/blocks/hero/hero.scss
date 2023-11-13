@@ -7,7 +7,7 @@
   .swiper-pagination-bullet {
     width: 5px;
     height: 5px;
-    background: var(--black);
+    background: var(--black, #000);
     opacity: 1;
   }
 
@@ -41,7 +41,7 @@
   }
 
   &__wrapper {
-    background: #b3315e;
+    background: var(--pink-dark, #b3315e);
   }
 
   &__decor-top-disabled,
@@ -57,7 +57,7 @@
   &__decor-top-disabled {
     svg {
       z-index: -1;
-      color: #b3315e;
+      color: var(--pink-dark, #b3315e);
       transform: scale(20);
 
       &.active {
@@ -279,7 +279,7 @@
     }
 
     @media screen and (min-width: $screen-d) {
-      gap: 0 148px;
+      gap: 0 120px;
       align-items: center;
       margin-bottom: -100px;
     }
@@ -331,11 +331,13 @@
     }
 
     @media screen and (min-width: $screen-tl) {
+      max-width: 540px;
       margin-top: 0;
       margin-bottom: -100px;
     }
 
     @media screen and (min-width: $screen-d) {
+      min-width: 628px;
       max-width: 628px;
       margin-bottom: -100px;
     }
@@ -350,11 +352,16 @@
   &__main-photo {
     width: 100%;
     height: 100%;
-    //min-height: 271px;
 
     @media screen and (min-width: $screen-tl) {
-      width: 540px;
+      max-width: 540px;
       height: 540px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      min-width: 628px;
+      max-width: 628px;
+      height: 628px;
     }
 
     img {
@@ -384,5 +391,5 @@
       display: none;
     }
   }
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 }

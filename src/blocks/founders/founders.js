@@ -1,9 +1,11 @@
 import ready from "../../js/utils/documentReady.js";
+import { isElementInViewport, animateSignature } from "../../js/animation-signature";
 
 ready(function () {
   let tab = document.querySelectorAll(".founders__item"),
     tabContent = document.querySelectorAll(".founders__container-tab");
   let blobColor;
+  let el = document.querySelector(".cursor");
 
   tab.forEach((n) => {
     n.addEventListener("click", function () {
@@ -12,7 +14,7 @@ ready(function () {
       });
       n.classList.toggle("active");
       for (let i = 0; i < tab.length; i++) {
-        if (n == tab[i]) {
+        if (n == tab[i] && n.classList.contains("active")) {
           hideTabContent();
           showTabContent(i);
         }
@@ -30,74 +32,54 @@ ready(function () {
   function showTabContent(b) {
     tabContent[b].classList.remove("hide");
     tabContent[b].classList.add("show");
+    b == 0 ? tabAnimate("#B3315E", "#1f7b5c") : tabAnimate("#1f7b5c", "#b3315e");
+    setTimeout(() => {
+      animateOnScroll();
+    }, 800);
+  }
 
-    if (b == 0) {
-      blobColor = "#B3315E";
-      document.querySelector(".cursor--active").style.background = "#B3315E";
-      document.querySelector(".founders").style.background = "#1f7b5c";
-    } else {
-      blobColor = "#1f7b5c";
-      document.querySelector(".cursor--active").style.background = "#1f7b5c";
-      document.querySelector(".founders").style.background = "#B3315E";
-    }
+  function tabAnimate(elColor, bgColor) {
+    blobColor = elColor;
+    el.style.transform = "scale(50)";
+    el.style.transition = "1s ease-out";
+    el.classList.add("disabled");
+    setTimeout(() => {
+      el.style = "";
+      el.classList.remove("disabled");
+      document.querySelector(".cursor--active").style.background = elColor;
+      document.querySelector(".founders").style.background = bgColor;
+    }, 1000);
   }
 
   //анимация курсора в блоке "Основатели фонда"
   function followCursor() {
-    const el = document.querySelector(".cursor");
+    el = document.querySelector(".cursor");
+    let blockFounder = document.querySelector(".founders");
 
-    window.addEventListener("mousemove", (e) => {
+    blockFounder.addEventListener("mousemove", (e) => {
       if (!e.target) return;
-      if (e.target.closest(".founders__item")) {
+      if (e.target.closest(".founders__item") && !e.target.closest(".founders__item.active")) {
         document.querySelector(".cursor").style.background = blobColor;
         el.classList.add("cursor--active");
+        el.style.left = e.clientX - blockFounder.getBoundingClientRect().left + "px";
+        el.style.top = e.clientY - blockFounder.getBoundingClientRect().top + "px";
       } else {
-        el.classList.remove("cursor--active");
-        document.querySelector(".cursor").style = "none";
+        if (!el.classList.contains("disabled")) {
+          el.style = "";
+          document.querySelector(".cursor").style = "none";
+          el.classList.remove("cursor--active");
+        }
       }
-      el.style.left = e.pageX + "px";
-      el.style.top = e.pageY + "px";
     });
   }
 
   followCursor();
 
-  function calcPaths() {
-    const paths = document.querySelectorAll(".signature-animation");
-    const totalDuration = 3;
-    let len = 0;
-    if (!paths.length) {
-      return false;
-    }
-    paths.forEach((path) => {
-      len += path.getTotalLength();
-    });
-
-    paths.forEach((path) => {
-      const totalLen = path.getTotalLength();
-      const duration = (totalLen / len) * totalDuration;
-      path.style.animationDuration = `${duration < 0.2 ? 0.2 : duration}s`;
-      path.setAttribute("stroke-dasharray", totalLen);
-      path.setAttribute("stroke-dashoffset", totalLen);
-    });
-  }
-
-  // функция для проверки видимости элемента на странице
-  function isElementInViewport(el) {
-    var rect = el.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
   function animateOnScroll() {
-    var elements = document.querySelectorAll(".show .founders__container-signature");
+    let elements = document.querySelectorAll(".show .founders__container-signature");
     elements.forEach(function (element) {
       if (isElementInViewport(element) && !element.classList.contains("disabled")) {
-        calcPaths();
+        animateSignature(".signature-animation");
         element.classList.add("animate");
         setTimeout(() => {
           element.classList.remove("animate");
@@ -109,8 +91,10 @@ ready(function () {
 
   window.addEventListener("scroll", animateOnScroll);
 
+  animateOnScroll();
+
   window.addEventListener("resize", function () {
-    var newWidth = window.innerWidth;
+    let newWidth = window.innerWidth;
     resizeWindow(newWidth);
   });
 

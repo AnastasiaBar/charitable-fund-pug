@@ -1,5 +1,5 @@
 .burger {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   &__button {
     position: relative;
@@ -16,7 +16,7 @@
       height: 2px;
       background-color: var(--color-black, #000);
       transform: translate(0, -50%);
-      transition: all 0.5s !important;
+      transition: all 0.5s;
 
       &:nth-of-type(2) {
         top: calc(50% - 7px);
@@ -56,7 +56,7 @@
     padding: 105px 20px 50px;
     background: var(--white, #fff);
     transform: translate(100%, 0);
-    transition: all 0.5s ease-out !important;
+    transition: all 0.5s ease-out;
 
     [data-state="mobile-menu"] &--active {
       transform: translate(0%, 0);

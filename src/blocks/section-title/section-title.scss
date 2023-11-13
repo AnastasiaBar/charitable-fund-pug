@@ -1,0 +1,43 @@
+@import "../../scss/breakpoints";
+
+.section-title {
+  $block-name: &;
+
+  position: relative;
+  z-index: 100;
+  margin: 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+
+  @media screen and (min-width: $screen-d) {
+    font-size: 32px;
+    line-height: 48px;
+  }
+
+  &--black {
+    color: var(--black, #000);
+  }
+
+  &--white {
+    color: var(--white, #fff);
+  }
+
+  &--number {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 12px;
+      color: var(--pink, #d91869);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+
+      @media screen and (min-width: $screen-d) {
+        font-size: 16px;
+        line-height: 24px; /* 150% */
+      }
+    }
+  }
+}

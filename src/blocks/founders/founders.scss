@@ -1,24 +1,16 @@
 @import "../../scss/breakpoints";
 
 .founders {
-  padding: 96px 0 88px;
+  position: relative;
+  padding: 32px 0 76px;
+  overflow: hidden;
   background: var(--green, #1f7b5c);
-
-  @media screen and (min-width: $screen-m) {
-    padding: 32px 0 76px;
-  }
 
   @media screen and (min-width: $screen-d) {
     padding: 96px 0 88px;
   }
 
   .hide {
-    display: none;
-
-    @media screen and (min-width: $screen-m) {
-      display: block;
-    }
-
     @media screen and (min-width: $screen-ti) {
       display: flex;
       flex-wrap: wrap;
@@ -27,13 +19,14 @@
     }
 
     @media screen and (min-width: $screen-tl) {
-      display: none;
+      position: absolute;
+      overflow: hidden;
+      opacity: 0;
+      transition: 0.7s ease-out;
     }
   }
 
   .show {
-    display: block;
-
     @media screen and (min-width: $screen-ti) {
       display: flex;
       flex-wrap: wrap;
@@ -42,92 +35,65 @@
     }
 
     @media screen and (min-width: $screen-tl) {
-      display: block;
-    }
-  }
-
-  &__title {
-    color: var(--white, #fff);
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 48px; /* 150% */
-
-    @media screen and (min-width: $screen-m) {
-      font-size: 20px;
-      line-height: 30px; /* 150% */
-    }
-
-    @media screen and (min-width: $screen-d) {
-      font-size: 32px;
-      line-height: 48px; /* 150% */
+      position: relative;
+      overflow: visible;
+      opacity: 1;
+      transition: 0.7s ease-out;
     }
   }
 
   &__inner {
     display: flex;
+    flex-wrap: wrap;
     gap: 0 148px;
     justify-content: space-between;
-    margin-top: 64px;
-
-    @media screen and (min-width: $screen-m) {
-      flex-wrap: wrap;
-      margin-top: 48px;
-    }
+    margin-top: 48px;
 
     @media screen and (min-width: $screen-tl) {
       flex-wrap: nowrap;
+      gap: 0 62px;
     }
 
     @media screen and (min-width: $screen-d) {
+      gap: 0 148px;
       margin-top: 64px;
     }
   }
 
   &__left {
+    display: none;
     white-space: nowrap;
-
-    @media screen and (min-width: $screen-m) {
-      display: none;
-    }
 
     @media screen and (min-width: $screen-tl) {
       display: block;
+      width: 100%;
     }
   }
 
   &__item {
     position: relative;
+    z-index: 100;
     margin-bottom: 48px;
-    padding-left: 40px;
+    padding: 0;
     color: var(--white, #fff);
+    border-left: 2px solid transparent;
     cursor: pointer;
-    opacity: 0.7;
-
-    @media screen and (min-width: $screen-m) {
-      padding: 0;
-      opacity: 1;
-    }
+    opacity: 1;
 
     @media screen and (min-width: $screen-ti) {
       width: 100%;
     }
 
     @media screen and (min-width: $screen-tl) {
+      width: fit-content;
       padding-left: 40px;
       opacity: 0.7;
     }
 
     &.active {
-      border-left: 2px solid var(--white);
+      border-left: 2px solid var(--white, #fff);
+      cursor: auto;
       opacity: 1;
-
-      @media screen and (min-width: $screen-m) {
-        border-left: 0;
-      }
-
-      @media screen and (min-width: $screen-tl) {
-        border-left: 2px solid var(--white);
-      }
     }
   }
 
@@ -140,18 +106,13 @@
   &__name {
     margin: 0;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 28px;
     font-family: var(--font-sourceserif);
-    line-height: 48px; /* 120% */
-
-    @media screen and (min-width: $screen-m) {
-      font-size: 28px;
-      line-height: 32px; /* 114.286% */
-    }
+    line-height: 32px;
 
     @media screen and (min-width: $screen-d) {
       font-size: 40px;
-      line-height: 48px; /* 114.286% */
+      line-height: 48px;
     }
   }
 
@@ -159,37 +120,29 @@
     margin: 16px 0 0;
     font-weight: 400;
     font-size: 14px;
-    line-height: 22px; /* 157.143% */
-
-    @media screen and (min-width: $screen-m) {
-      font-size: 14px;
-      line-height: 22px; /* 157.143% */
-      opacity: 0.7;
-    }
+    line-height: 22px;
+    opacity: 0.7;
   }
 
   &__right {
-    width: 628px;
-
-    @media screen and (min-width: $screen-m) {
-      width: 100%;
-    }
+    position: relative;
+    z-index: 200;
+    width: 100%;
 
     @media screen and (min-width: $screen-tl) {
-      width: 540px;
+      max-width: 540px;
     }
 
     @media screen and (min-width: $screen-d) {
       width: 628px;
+      min-width: 628px;
+      max-width: 628px;
     }
   }
 
   &__container-tab {
     display: block;
-
-    @media screen and (min-width: $screen-m) {
-      margin-bottom: 100px;
-    }
+    margin-bottom: 100px;
 
     @media screen and (min-width: $screen-ti) {
       margin-bottom: 10px;
@@ -200,9 +153,7 @@
     }
 
     &:last-child {
-      @media screen and (min-width: $screen-m) {
-        margin-bottom: 0;
-      }
+      margin-bottom: 0;
     }
   }
 
@@ -210,17 +161,14 @@
     width: 100%;
     object-fit: cover;
     border-radius: 4px;
-
-    @media screen and (min-width: $screen-m) {
-      aspect-ratio: auto;
-    }
+    aspect-ratio: auto;
 
     @media screen and (min-width: $screen-t) {
       max-height: 412px;
     }
 
     @media screen and (min-width: $screen-ti) {
-      width: 50%;
+      width: 37%;
     }
 
     @media screen and (min-width: $screen-tl) {
@@ -229,19 +177,13 @@
   }
 
   &__text {
-    margin: 64px 0 53px;
-    color: var(--white);
-    font-size: 32px;
-    line-height: 44px; /* 137.5% */
-
-    @media screen and (min-width: $screen-m) {
-      margin: 48px 0 0;
-      font-size: 18px;
-      line-height: 26px; /* 144.444% */
-    }
+    margin: 48px 0 0;
+    color: var(--white, #fff);
+    font-size: 18px;
+    line-height: 26px;
 
     @media screen and (min-width: $screen-ti) {
-      width: calc(50% - 50px);
+      width: calc(100% - 50px - 37%);
       margin: 0;
     }
 
@@ -259,10 +201,7 @@
   &__container-signature {
     display: flex;
     justify-content: flex-end;
-
-    @media screen and (min-width: $screen-m) {
-      width: auto;
-    }
+    width: auto;
 
     @media screen and (min-width: $screen-ti) {
       width: 100%;
@@ -271,14 +210,9 @@
 
   &__signature {
     &--first {
-      width: 366px;
-      height: 215px;
-
-      @media screen and (min-width: $screen-m) {
-        width: 160px;
-        height: 160px;
-        background-size: 160px;
-      }
+      width: 160px;
+      height: 160px;
+      background-size: 160px;
 
       @media screen and (min-width: $screen-d) {
         width: 366px;
@@ -287,14 +221,9 @@
     }
 
     &--second {
-      width: 268px;
-      height: 136px;
-
-      @media screen and (min-width: $screen-m) {
-        width: 160px;
-        height: 160px;
-        background-size: 160px;
-      }
+      width: 160px;
+      height: 160px;
+      background-size: 160px;
 
       @media screen and (min-width: $screen-d) {
         width: 268px;
@@ -302,5 +231,5 @@
       }
     }
   }
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 }

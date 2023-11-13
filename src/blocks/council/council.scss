@@ -1,0 +1,243 @@
+@import "../../scss/breakpoints";
+
+.council {
+  padding: 32px 0;
+  background: var(--grey, #f3f3f3);
+
+  @media screen and (min-width: $screen-d) {
+    padding: 96px 0;
+  }
+
+  .swiper-slide {
+    width: 83%;
+    height: auto;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__container-arrows {
+    display: none;
+    gap: 0 24px;
+
+    @media screen and (min-width: $screen-tl) {
+      display: flex;
+    }
+  }
+
+  &__swiper-button-next {
+    position: relative;
+    left: 0;
+    z-index: 100;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0;
+    transform: rotate(180deg);
+    cursor: pointer;
+    transition: 0.3s ease-out;
+
+    @media screen and (min-width: $screen-d) {
+      width: 48px;
+      height: 48px;
+    }
+
+    &:hover {
+      left: 10px;
+    }
+  }
+
+  &__swiper-button-prev {
+    position: relative;
+    right: 0;
+    z-index: 100;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+
+    @media screen and (min-width: $screen-d) {
+      width: 48px;
+      height: 48px;
+    }
+
+    &:hover {
+      right: 10px;
+    }
+  }
+
+  &__inner {
+    display: none;
+    gap: 0 94px;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 64px;
+
+    @media screen and (min-width: $screen-tl) {
+      display: flex;
+      gap: 0 46px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      gap: 0 94px;
+    }
+  }
+
+  &__slider {
+    width: 452px;
+  }
+
+  &__slider-img {
+    flex-shrink: 0;
+    border-radius: 4px;
+
+    @media screen and (min-width: $screen-tl) {
+      width: 353px;
+      height: 353px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      width: 412px;
+      height: 412px;
+    }
+  }
+
+  &__right {
+    width: 624px;
+  }
+
+  &__slider-right {
+    width: 540px;
+
+    @media screen and (min-width: $screen-d) {
+      width: 624px;
+    }
+  }
+
+  &__text {
+    display: -webkit-box;
+    margin: 40px 0 0;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+
+    @media screen and (min-width: $screen-tl) {
+      margin-top: 0;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      margin-top: 0;
+      overflow: visible;
+      font-size: 24px;
+      line-height: 32px;
+      -webkit-line-clamp: inherit;
+    }
+
+    &--active {
+      -webkit-line-clamp: inherit;
+    }
+  }
+
+  &__name {
+    margin: 24px 0 8px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+
+    @media screen and (min-width: $screen-d) {
+      margin: 32px 0 8px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  &__post {
+    margin: 0;
+    color: var(--grey-post-color, #7e7e7e);
+    font-size: 13px;
+    line-height: 21px;
+
+    @media screen and (min-width: $screen-d) {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  &__container-signature {
+    position: relative;
+    bottom: 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__signature {
+    color: var(--black, #000);
+
+    @media screen and (min-width: $screen-ti) {
+      width: 180px;
+      height: 180px;
+    }
+
+    @media screen and (min-width: $screen-d) {
+      width: 231px;
+      height: 264px;
+    }
+  }
+
+  &__slider-mobile {
+    margin-top: 28px;
+
+    @media screen and (min-width: $screen-d) {
+      display: none;
+    }
+  }
+
+  &__inner-mobile {
+    display: block;
+    height: 100%;
+    padding: 28px;
+    background: var(--white, #fff);
+    border-radius: 2px;
+
+    @media screen and (min-width: $screen-tl) {
+      display: none;
+    }
+  }
+
+  &__container-header {
+    display: flex;
+  }
+
+  &__header-left {
+    flex-shrink: 0;
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 4px;
+    aspect-ratio: 1/1;
+  }
+
+  &__header-right {
+    position: relative;
+    top: 40px;
+    left: -10px;
+    width: 128px;
+    height: 128px;
+  }
+
+  &__all-text {
+    margin-top: 7px;
+    padding: 0;
+    color: var(--pink, #d91869);
+    font-size: 14px;
+    line-height: 22px;
+    border: 0;
+  }
+  $block-name: &;
+}

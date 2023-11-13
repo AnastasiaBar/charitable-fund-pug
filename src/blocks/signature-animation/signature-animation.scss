@@ -1,5 +1,5 @@
 .signature-animation {
-  $block-name: &; // #{$block-name}__element
+  $block-name: &;
 
   opacity: 0;
   animation-timing-function: linear;
